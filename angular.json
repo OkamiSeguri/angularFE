@@ -63,8 +63,8 @@
               "outputHashing": "all",
               "fileReplacements": [
                 {
-                  "replace": "src/enviroments/enviroment",
-                  "with": "src/enviroments/enviroment.prod"
+                  "replace": "enviroments/enviroment",
+                  "with": "enviroments/enviroment.prod"
                 }
               ]
             },
