@@ -8,7 +8,6 @@ import { AddBlogPostComponent } from './views/blog-post/add-blog-post/add-blog-p
 import { BlogPostComponent } from './views/blog-post/blog-post.component';
 import { AddCategoryComponent } from './views/category/add-category/add-category.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { environment } from './enviroments/enviroment.prod';
 
 import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';

@@ -4,7 +4,7 @@ import { AddBlogPostRequest } from '../models/add-blogpost-request.model';
 import { BlogPost } from '../models/blog-post.model';
 import { HttpClient } from '@angular/common/http';
 import { UpdateBlogPostRequest } from '../models/update-blogpost-request.model';
-import { environment } from './../../../enviroments/enviroment';
+import { environment } from '../../../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
