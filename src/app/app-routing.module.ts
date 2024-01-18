@@ -1,3 +1,4 @@
+import { AddAdsComponent } from './views/ads/add-ads/add-ads.component';
 import { HomeComponent } from './views/home/home.component';
 import { authGuard } from './views/auth/guards/auth.guard';
 import { CategoryComponent } from './views/category/category.component';
@@ -110,6 +111,13 @@ const routes: Routes = [
       component: EditBlogPostComponent,
       data: {
         title: 'Edit BlogPosts'
+      },
+      canActivate: [authGuard]
+      },
+      { path: 'ads/add-ads',
+      component: AddAdsComponent,
+      data: {
+        title: 'Add Ads'
       },
       canActivate: [authGuard]
       },

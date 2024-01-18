@@ -26,6 +26,22 @@ export const navItems: INavData[] = [
       
     ],
   },
+  {
+    name: 'Ads',
+    url: '/admin/ads',
+    iconComponent: { name: 'cil-puzzle' },
+    children: [
+      {
+        name: 'Request New Ads',
+        url: '/admin/ads/add-ads',
+      },
+      {
+        name: 'My Ads Requested',
+        url: '/admin/ads/my-ads',
+      },
+      
+    ],
+  },
 
   {
     name: 'System',
