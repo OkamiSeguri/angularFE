@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+  <ng-container *ngIf="blogPosts$ | async as blogPosts">
+<c-container class="mt-4">
+    <c-row>
+        <c-col xs="8">
+            
+                <c-carousel>
+                    <c-carousel-indicators></c-carousel-indicators>
+                    <c-carousel-inner>
+                        
+                      <c-carousel-item *ngFor="let blogPost of blogPosts">
+                        <a [routerLink]="['/blog', blogPost.urlHandle]"> <img
+                          alt="{{blogPost.title}}"
+                          class="d-block w-100"
+                          loading="lazy"
+                          src="{{blogPost.featuredImageUrl}}"
+                          
+                        /></a>
+                      </c-carousel-item>
+                    </c-carousel-inner>
+                    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+                    <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+                    
+                  </c-carousel>
+        </c-col>
+        <c-col xs="4">
+            <ng-container *ngFor="let blogPost of blogPosts.slice(0,2)">
+              <a style="text-decoration:none; color: black;" [routerLink]="['/blog', blogPost.urlHandle]">
+              <c-card class="mb-3">
+                <img [cCardImg] [src]="blogPost.featuredImageUrl">
+                <c-card-footer>
+                  <h6 cCardTitle>{{blogPost.title}}</h6>
+                </c-card-footer>
+              </c-card>
+            </a>
+            </ng-container>
+        </c-col>
+        <ng-container *ngFor="let blogPost of blogPosts">
+          <a style="text-decoration:none; color: black;" [routerLink]="['/blog', blogPost.urlHandle]">
+
+        <c-card class="mb-3">
+          <c-row class="g-0">
+            <c-col [md]="4">
+              <img [cCardImg] [src]="blogPost.featuredImageUrl">
+            </c-col>
+            <c-card-body cCol [md]="8">
+              <h5 cCardTitle>{{blogPost.title}}</h5>
+              <p cCardText>
+                {{blogPost.shortDescription}}
+              </p>
+              
+            </c-card-body>
+          </c-row>
+        </c-card>
+        </a>
+        
+        </ng-container>
+
+      </c-row>
+</c-container>
+</ng-container>

@@ -1,0 +1,40 @@
+<button (click)="openDialog()" cButton>Add Category</button>
+
+<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleChange($event)">
+    <form cForm #form="ngForm" (ngSubmit)="onFormSubmit()">
+    <c-modal-header>
+      <h5 cModalTitle>Add Category</h5>
+      <button (click)="openDialog()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+            <div class="mb-3">
+              <label cLabel for="categoryName">Category Name</label>
+              <input cFormControl
+                     id="categoryName"
+                     type="text"
+                     name="categoryName"
+                     [(ngModel)]="model.name"
+              />
+            </div>
+
+            <div class="mb-3">
+                <label cLabel for="categoryUrlHandle">Category Url Handle</label>
+                <input cFormControl
+                       id="categoryUrlHandle"
+                       type="text"
+                       name="categoryUrlHandle"
+                       [(ngModel)]="model.urlHandle"
+                />
+              </div>
+           
+         
+          
+    </c-modal-body>
+    <c-modal-footer>
+      <button (click)="openDialog()" cButton color="secondary">
+        Close
+      </button>
+      <button cButton type="submit" color="primary">Save changes</button>
+    </c-modal-footer>
+</form>
+</c-modal>

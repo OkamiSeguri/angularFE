@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+    <c-container>
+        <c-row><ng-container *ngIf="blogPost$ | async as blogPost">
+
+          <c-col md="8"><h2 class="mt-4">{{blogPost.title}}</h2>
+    
+            <div class=" mt-4">
+                <span>Update by {{blogPost.author}} at {{blogPost.publishedDate | date:'dd-MM-yyyy'}}</span>
+            </div>
+
+            <div *ngIf="blogPost.categories" class="mt-4">
+                <span class="badge bg-secondary me-2" *ngFor="let category of blogPost.categories">{{category.name}}</span>
+            </div>
+
+            <div class="mt-4">
+                <ckeditor name="content"  [disabled]="true" [config]="{ toolbar: [ ] }"  [editor]="Editor" [(ngModel)]="blogPost.content" ></ckeditor>
+            </div></c-col>
+        </ng-container>
+            <ng-container *ngIf="blogPostList$ | async as blogPostList">
+          <c-col xs="6" md="4">
+            <div style="margin-top: 220px;">
+            <ng-container *ngFor="let blogPost of blogPostList.slice(0,3)">
+                <a style="text-decoration:none; color: black;" [routerLink]="['/blog', blogPost.urlHandle]">
+                <c-card class="mb-3">
+                  <img [cCardImg] [src]="blogPost.featuredImageUrl">
+                  <c-card-footer>
+                    <h6 cCardTitle>{{blogPost.title}}</h6>
+                  </c-card-footer>
+                </c-card>
+              </a>
+              </ng-container>
+            </div>
+          </c-col>
+        </ng-container>
+        </c-row>
+   </c-container>
+   

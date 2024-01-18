@@ -1,0 +1,35 @@
+$background-color_1: transparent;
+
+.ckeditor-viewer {
+	.ck.ck-editor__editable.ck-blurred {
+		.ck-widget.ck-widget_selected {
+			outline-width: 0;
+		}
+	}
+	.ck {
+		.ck-editor__nested-editable {
+			border: 1px solid transparent;
+			height: 0;
+			margin: 0;
+		}
+		.ck-widget__selection-handle {
+			width: 0;
+			height: 0;
+			display: none;
+		}
+	}
+	.ck-content {
+		.image {
+			>figcaption {
+				background-color: $background-color_1 !important;
+			}
+		}
+	}
+}
+.ck.ck-editor__editable.ck-blurred {
+	.ck-widget.ck-widget_selected {
+		&:hover {
+			outline-width: 0;
+		}
+	}
+}
