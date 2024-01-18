@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../models/category.model';
 import { UpdateCategoryRequest } from '../models/update-category-request.model';
-import { environment } from './../../../enviroments/enviroment';
+import { environment } from '../../../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'

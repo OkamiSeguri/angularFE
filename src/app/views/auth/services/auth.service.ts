@@ -1,4 +1,4 @@
-import { environment } from './../../../enviroments/enviroment';
+import { environment } from '../../../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginRequest } from '../models/login-request.model';
