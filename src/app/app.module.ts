@@ -33,6 +33,7 @@ import {
   BreadcrumbModule,
   ButtonGroupModule,
   ButtonModule,
+  CalloutModule,
   CardModule,
   CarouselModule,
   DropdownModule,
@@ -65,6 +66,7 @@ import { Page403Component } from './views/auth/page403/page403.component';
 import { Page500Component } from './views/auth/page500/page500.component';
 import { CategoryComponent } from './views/category/category.component';
 import { HomeComponent } from './views/home/home.component';
+import { AddAdsComponent } from './views/ads/add-ads/add-ads.component';
 
 
 const APP_CONTAINERS = [
@@ -92,7 +94,8 @@ const APP_CONTAINERS = [
     ImageSlectorComponent,
     HomeComponent,
     BlogDetailComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddAdsComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +136,8 @@ const APP_CONTAINERS = [
     ModalModule,
     CarouselModule,
     NavbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CalloutModule
   ],
   providers: [
     
