@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BlogImage } from '../../models/blog-image.model';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/enviroments/enviroment.prod';
+import { environment } from 'src/enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
@@ -39,4 +39,5 @@ export class ImageService {
   onSelectImage(): Observable<BlogImage> {
     return this.selectedImage.asObservable();
   }
+
 }

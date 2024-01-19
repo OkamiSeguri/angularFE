@@ -1,0 +1,40 @@
+<c-modal #scrollableLongContentModal scrollable [visible]="visible" (visibleChange)="handleChange($event)">
+    <c-modal-header>
+        <h5 cModalTitle>Images</h5>
+        <button (click)="openDialog()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+
+        <h5>Upload Image</h5>
+        <form #form="ngForm" (ngSubmit)="uploadImage()">
+            <div class="mt-3">
+                <input type="file" name="" id="" class="form-control" (change)="onFileUploadChange($event)" />
+            </div>
+            <div class="mt-3">
+                <input type="text" id="" class="form-control" name="filename" placeholder="File Name"
+                    [(ngModel)]="fileName" />
+            </div>
+            <div class="mt-3">
+                <input type="text" id="" class="form-control" name="title" placeholder="Tile" [(ngModel)]="title" />
+            </div>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-dark">Upload</button>
+            </div>
+        </form>
+        <ng-container *ngIf="images">
+
+            <div class="mt-2 p-4 bg-light">
+                <h5>Upload Successfully</h5>
+                <input cFormControl id="adsImage" type="text" name="adsImage" [value]="images.url"
+                    [(ngModel)]="images.url" />
+                <div>
+                    <img [src]="images.url" class="mt-2 img-fluid">
+                </div>
+
+            </div>
+        </ng-container>
+    </c-modal-body>
+    <c-modal-footer>
+        <button (click)="openDialog()" cButton color="secondary">Close</button>
+    </c-modal-footer>
+</c-modal>

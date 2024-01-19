@@ -1,6 +1,6 @@
 import { AdsService } from './../services/ads.service';
 import { AddAdsRequest } from './../models/add-ads-request.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Observable, Subscription } from 'rxjs';
@@ -13,6 +13,7 @@ import { ImageService } from 'src/app/shared/components/image-slector/image.serv
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../auth/models/user.model';
 import { AuthService } from '../../auth/services/auth.service';
+import { ImageSelectorUserComponent } from 'src/app/shared/components/image-slector/image-selector-user/image-selector-user.component';
 
 @Component({
   selector: 'app-add-ads',
@@ -28,6 +29,7 @@ export class AddAdsComponent implements OnInit{
   imageSelectSubscription?: Subscription;
   user?: User;
 
+  @ViewChild(ImageSelectorUserComponent) addView!: ImageSelectorUserComponent
 
   constructor(
     private blogPostService: BlogPostService,
@@ -66,7 +68,13 @@ export class AddAdsComponent implements OnInit{
       }
     })
     this.model.userId = this.authService.getUser().id
-    
+  }
+  openAdsImageDialog(){
+    this.addView.openDialog()
+  }
+
+  openfeaturedImageUrlDialog(){
+    this.addView.openDialog()
   }
 
 

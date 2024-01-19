@@ -1,61 +1,64 @@
 <c-row>
-    <c-col xs>
-      <c-card class="mb-4">
-        <c-card-header>
-              <c-row>
-                <c-col xs="auto" class="me-auto"><h3>BlogPost List</h3></c-col>
-                <c-col xs="auto"><button [routerLink]="['/admin/content/add-blogposts']" cButton>Add BlogPost</button>                </c-col>
-              </c-row>
-           
-        </c-card-header>
-        <c-card-body>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-body>
+        <c-row>
+          <c-col xs="auto" class="me-auto">
+            <h4>BlogPost List</h4>
+          </c-col>
+          <c-col xs="auto"><button [routerLink]="['/admin/content/add-blogposts']" cButton>
+              Add BlogPost
+            </button>
+          </c-col>
+        </c-row>
         <ng-container *ngIf="blogPosts$ | async as blogPosts">
-          <table
-            [hover]="true"
-            [responsive]="true"
-            [striped]="true"
-            align="middle"
-            cTable
-            class="mb-0 border"
-          >
+          <table small [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable
+            class="mb-0 mt-4 border">
             <thead cTableColor="light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Is Visible</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Categories</th>
-                    <th scope="col"></th>
-                  </tr>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Visible</th>
+                <th scope="col">Author</th>
+                <th scope="col">Categories</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+              </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let blogPost of blogPosts; let i = index">
-                  <td>{{i+1}}</td>
-                  <td><a style="text-decoration: none;" [routerLink]="['/blog', blogPost.urlHandle]">{{blogPost.title}}</a></td>
-                  <td>
-                    <div *ngIf="blogPost.isVisible; then trueBlock else falseBlock"></div>
-                    <ng-template #trueBlock><i class="fa-solid fa-check"></i></ng-template>
-                    <ng-template #falseBlock><i class="fa-solid fa-x"></i></ng-template></td>
-                  <td>{{blogPost.author}}</td>
-                  <td>
-                      <span class="badge text-bg-primary me-1" *ngFor="let category of blogPost.categories">{{category.name}}</span>
-                  </td>
-                  <td>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                      <a type="button" [routerLink]="['/admin/content/edit-blogposts', blogPost.id]" class="btn btn-warning me-md-2">Edit</a>
-                      <button (click)="onDelete(blogPost.id)" cButton color="danger">
-                        Delete
-                      </button>
-                    </div>
-                      
-                  </td>
-                </tr>
-                
-              </tbody>
+              <tr *ngFor="let blogPost of blogPosts; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                  <a style="text-decoration: none" [routerLink]="['/blog', blogPost.urlHandle]">{{ blogPost.title }}</a>
+                </td>
+                <td>
+                  <div *ngIf="blogPost.isVisible; then trueBlock; else falseBlock"></div>
+                  <ng-template #trueBlock><i class="fa-solid fa-check"></i></ng-template>
+                  <ng-template #falseBlock><i class="fa-solid fa-x"></i></ng-template>
+                </td>
+                <td>{{ blogPost.author }}</td>
+                <td>
+                  <span class="badge text-bg-primary me-1" *ngFor="let category of blogPost.categories">{{ category.name
+                    }}</span>
+                </td>
+                <td>{{ blogPost.publishedDate | date: 'dd-MM-YYYY' }}</td>
+                <td>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a type="button" [routerLink]="[
+                        '/admin/content/edit-blogposts',
+                        blogPost.id
+                      ]" class="btn btn-warning me-md-2">Edit</a>
+                    <button (click)="onDelete(blogPost.id)" cButton color="danger">
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
           </table>
-          </ng-container>
-        </c-card-body>
-      </c-card>
-    </c-col>
-  </c-row>
+        </ng-container>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
 <app-delete-blog-post></app-delete-blog-post>

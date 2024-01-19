@@ -1,20 +1,15 @@
 <ng-container *ngIf="blogPost">
-    <c-modal id="deleteBlogPost" [visible]="visible" (visibleChange)="handleChange($event)">
-        <c-modal-header>
-          <h5 cModalTitle>Delete BlogPost</h5>
-          <button (click)="openDialog()" cButtonClose></button>
-        </c-modal-header>
-        <c-modal-body>
-          
-          <p>Do you want to delete {{blogPost.title}}</p>
-        </c-modal-body>
-        <c-modal-footer>
-          <button (click)="onDelete()" cButton color="danger">
-            Delete
-          </button>
-          <button (click)="openDialog()" cButton color="secondary">
-            Close
-          </button>
-        </c-modal-footer>
-    </c-modal>
-    </ng-container>
+  <c-modal id="deleteBlogPost" [visible]="visible" (visibleChange)="handleChange($event)">
+    <c-modal-header>
+      <h5 cModalTitle>Delete BlogPost</h5>
+      <button (click)="openDialog()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+      <p>Do you want to delete {{ blogPost.title }}</p>
+    </c-modal-body>
+    <c-modal-footer>
+      <button (click)="onDelete()" cButton color="danger">Delete</button>
+      <button (click)="openDialog()" cButton color="secondary">Close</button>
+    </c-modal-footer>
+  </c-modal>
+</ng-container>

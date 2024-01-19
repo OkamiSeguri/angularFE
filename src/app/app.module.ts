@@ -1,3 +1,6 @@
+import { AdsDetailComponent } from './views/ads/ads-detail/ads-detail.component';
+import { MyAdsRequestComponent } from './views/ads/my-ads-request/my-ads-request.component';
+import { ImageSelectorUserComponent } from './shared/components/image-slector/image-selector-user/image-selector-user.component';
 import { DeleteBlogPostComponent } from './views/blog-post/delete-blog-post/delete-blog-post.component';
 import { EditBlogPostComponent } from './views/blog-post/edit-blog-post/edit-blog-post.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
@@ -91,10 +94,13 @@ const APP_CONTAINERS = [
     EditBlogPostComponent,
     DeleteBlogPostComponent,
     ImageSlectorComponent,
+    ImageSelectorUserComponent,
     HomeComponent,
     BlogDetailComponent,
     NavbarComponent,
-    AddAdsComponent
+    AddAdsComponent,
+    MyAdsRequestComponent,
+    AdsDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -137,7 +143,7 @@ const APP_CONTAINERS = [
     NavbarModule,
     ReactiveFormsModule,
     CalloutModule
-  ],
+    ],
   providers: [
     
     {

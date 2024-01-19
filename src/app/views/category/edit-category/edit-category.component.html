@@ -1,41 +1,32 @@
 <ng-container *ngIf="category">
-<c-modal id="editCategory" [visible]="visible" (visibleChange)="handleChange($event)">
+  <c-modal id="editCategory" [visible]="visible" (visibleChange)="handleChange($event)">
     <form cForm #form="ngForm" (ngSubmit)="onFormSubmit()">
-    <c-modal-header>
-      <h5 cModalTitle>Edit Category</h5>
-      <button (click)="openDialog()" cButtonClose></button>
-    </c-modal-header>
-    <c-modal-body>
-      
-      <div class="mb-3">
-        <label cLabel for="categoryName">Category Name</label>
-        <input cFormControl
-               id="categoryName"
-               type="text"
-               name="categoryName"
-              [(ngModel)]="category.name"
-        />
-      </div>
+      <c-modal-header>
+        <h5 cModalTitle>Edit Category</h5>
+        <button (click)="openDialog()" cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
 
-      <div class="mb-3">
-          <label cLabel for="categoryUrlHandle">Category Url Handle</label>
-          <input cFormControl
-                 id="categoryUrlHandle"
-                 type="text"
-                 name="categoryUrlHandle"
-                 [(ngModel)]="category.urlHandle"
-          />
+        <div class="mb-3">
+          <label cLabel for="categoryName">Category Name</label>
+          <input cFormControl id="categoryName" type="text" name="categoryName" [(ngModel)]="category.name" />
         </div>
-    </c-modal-body>
-    <c-modal-footer>
-      <button (click)="delete(category.id)" cButton color="danger">
-        Delete
-      </button>
-      <button (click)="openDialog()" cButton color="secondary">
-        Close
-      </button>
-      <button cButton type="submit" color="primary">Save changes</button>
-    </c-modal-footer>
-</form>
-</c-modal>
+
+        <div class="mb-3">
+          <label cLabel for="categoryUrlHandle">Category Url Handle</label>
+          <input cFormControl id="categoryUrlHandle" type="text" name="categoryUrlHandle"
+            [(ngModel)]="category.urlHandle" />
+        </div>
+      </c-modal-body>
+      <c-modal-footer>
+        <button (click)="delete(category.id)" cButton color="danger">
+          Delete
+        </button>
+        <button (click)="openDialog()" cButton color="secondary">
+          Close
+        </button>
+        <button cButton type="submit" color="primary">Save changes</button>
+      </c-modal-footer>
+    </form>
+  </c-modal>
 </ng-container>

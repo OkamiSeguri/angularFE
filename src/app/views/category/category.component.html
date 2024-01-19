@@ -1,47 +1,38 @@
 <c-row>
-    <c-col xs>
-      <c-card class="mb-4">
-        <c-card-header>
-              <c-row>
-                <c-col xs="auto" class="me-auto"><h3>Categories List</h3></c-col>
-                <c-col xs="auto"><app-add-category></app-add-category></c-col>
-              </c-row>
-           
-        </c-card-header>
-        <c-card-body>
-            <ng-container *ngIf="categories$ | async as categories">
-
-          <table
-            [hover]="true"
-            [responsive]="true"
-            [striped]="true"
-            align="middle"
-            cTable
-            class="mb-0 border"
-          >
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-body>
+        <c-row>
+          <c-col xs="auto" class="me-auto">
+            <h4>Categories List</h4>
+          </c-col>
+          <c-col xs="auto"><app-add-category></app-add-category></c-col>
+        </c-row>
+        <ng-container *ngIf="categories$ | async as categories">
+          <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 mt-4 border">
             <thead cTableColor="light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Url Handler</th>
-                    <th scope="col"></th>
-                  </tr>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Url Handler</th>
+                <th scope="col"></th>
+              </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let category of categories; let i = index">
-                    <td>{{i + 1}}</td>
-                    <td>{{category.name}}</td>
-                    <td>{{category.urlHandle}}</td>
-                    <td>
-                        <button (click)="editCategory(category.id)" cButton color="warning">Edit</button>
-                     
-                    </td>
-                  </tr>
+              <tr *ngFor="let category of categories; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{category.name}}</td>
+                <td>{{category.urlHandle}}</td>
+                <td>
+                  <button (click)="editCategory(category.id)" cButton color="warning">Edit</button>
+
+                </td>
+              </tr>
             </tbody>
           </table>
-          </ng-container>
-        </c-card-body>
-      </c-card>
-    </c-col>
-  </c-row>
+        </ng-container>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
 <app-edit-category></app-edit-category>
