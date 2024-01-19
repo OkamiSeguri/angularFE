@@ -43,7 +43,8 @@
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
-              "chart.js"
+              "chart.js",
+              "@ckeditor/ckeditor5-build-classic"
             ]
           },
           "configurations": {

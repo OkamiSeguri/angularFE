@@ -22,11 +22,13 @@ export class AdsService {
     return this.http.get<Ads[]>(`${environment.apiBaseUrl}/api/Advertisement`)
   }
 
-  getAdstById(id: string) : Observable<Ads> {
-    return this. http.get<Ads>(`${environment.apiBaseUrl}/api/Advertisement/${id}`)
+  getAdsById(id: string) : Observable<Ads> {
+    return this. http.get<Ads>(`${environment.apiBaseUrl}/api/Advertisement/AdsDetail&id=${id}?addAuth=true`)
   }
 
-  
+  getAdstByUser(id: string) : Observable<Ads[]> {
+    return this. http.get<Ads[]>(`${environment.apiBaseUrl}/api/Advertisement/MyAdsRequest&id=${id}?addAuth=true`)
+  }
 
   deleteAds(id: string) : Observable<Ads> {
     return this.http.delete<Ads>(`${environment.apiBaseUrl}/api/Advertisement/${id}?addAuth=true`)

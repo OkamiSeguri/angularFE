@@ -1,0 +1,139 @@
+<c-row>
+    <c-col xs>
+        <c-card class="mb-4">
+            <c-card-body>
+                <c-row>
+                    <c-col xs="auto" class="me-auto">
+                        <h4>Ads Detail</h4>
+                    </c-col>
+                    <c-col xs="auto">
+                    </c-col>
+                </c-row>
+                <ng-container *ngIf="ads">
+                    <div class="d-flex flex-md-row-sm-column flex-wrap">
+                        <div class="col-8 pe-4">
+                            <table small [responsive]="true" align="middle" cTable class="mb-0 border">
+                                <thead cTableColor="light">
+                                    <tr>
+                                        <th scope="col">Company</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Payment</th>
+                                        <th scope="col">Date Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ ads.company }}</td>
+                                        <td>[User]</td>
+                                        <td>
+                                            <c-badge *ngIf="ads.type == 1" color="success"
+                                                shape="rounded-pill">Diamond</c-badge>
+                                            <c-badge *ngIf="ads.type == 2" color="warning"
+                                                shape="rounded-pill">Gold</c-badge>
+                                            <c-badge *ngIf="ads.type == 3" color="dark"
+                                                shape="rounded-pill">Sliver</c-badge>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="ads.type == 1">5.000.000 VNĐ</span>
+                                            <span *ngIf="ads.type == 2">3.000.000 VNĐ</span>
+                                            <span *ngIf="ads.type == 3">2.000.000 VNĐ</span>
+                                        </td>
+                                        <td>{{ ads.dateCreated | date : "dd-MM-YYYY hh:mm" }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <c-row>
+                                <c-col xs="auto" class="me-auto mt-4">
+                                    <h4>Content</h4>
+                                </c-col>
+                                <c-col xs="auto">
+                                </c-col>
+                            </c-row>
+                            <c-nav variant="tabs">
+                                <a [active]="true" [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="0" cNavLink>Ads
+                                    Image</a>
+                                <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="1" cNavLink>BlogPost</a>
+                            </c-nav>
+                            <c-tab-content #tabContent="cTabContent">
+                                <c-tab-pane class="p-3">
+                                    <img [src]="ads.adsImage" alt="" srcset="" class="img-fluid">
+                                </c-tab-pane>
+                                <c-tab-pane class="p-3">
+                                    <img [src]="ads.blogPost.featuredImageUrl" class="img-fluid" alt="">
+
+                                    <h3 class="mt-4">{{ ads.blogPost.title }}</h3>
+
+                                    <div class="mt-4">
+                                        <span>Update by {{ ads.blogPost.author }} at
+                                            {{ ads.blogPost.publishedDate | date : "dd-MM-yyyy" }}</span>
+                                    </div>
+                                    <div *ngIf="ads.blogPost.categories" class="mt-4">
+                                        <span class="badge bg-secondary me-2"
+                                            *ngFor="let category of ads.blogPost.categories">{{ category.name }}</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="fw-bold">{{ads.blogPost.shortDescription}}</p>
+                                    </div>
+                                    <ckeditor name="content" [disabled]="true" [config]="{ toolbar: [] }"
+                                        [editor]="Editor" [(ngModel)]="ads.blogPost.content"></ckeditor>
+
+                                </c-tab-pane>
+
+                            </c-tab-content>
+                            <c-row>
+                                <c-col xs="auto" class="me-auto mt-4">
+                                    <h4>Comment</h4>
+                                </c-col>
+                                <c-col xs="auto">
+                                </c-col>
+                            </c-row>
+                            <textarea disabled cFormControl rows="auto">{{ads.comment}}</textarea>
+
+
+
+                        </div>
+                        <div class="col-4">
+                            <div class="p-4 bg-light">
+                                <h5>Result</h5>
+                                <p>Status:
+                                    <c-badge *ngIf="ads.status == 1" color="primary" shape="rounded-pill">New</c-badge>
+                                    <c-badge *ngIf="ads.status == 2" color="info"
+                                        shape="rounded-pill">On-Going</c-badge>
+                                    <c-badge *ngIf="ads.status == 3" color="success"
+                                        shape="rounded-pill">Approved</c-badge>
+                                    <c-badge *ngIf="ads.status == 4" color="danger"
+                                        shape="rounded-pill">Rejected</c-badge>
+                                    <c-badge *ngIf="ads.status == 5" color="warning" shape="rounded-pill">Waiting
+                                        for
+                                        payment</c-badge>
+                                    <span *ngIf="ads.dateUpdated"> at {{ads.dateUpdated | date: "dd-MM-yyyy
+                                        hh:mm:ss"}}</span>
+                                </p>
+                                <p>Payment:
+                                    <span>
+                                        <c-badge *ngIf="ads.payment == 1" color="primary"
+                                            shape="rounded-pill">New</c-badge>
+                                        <c-badge *ngIf="ads.payment == 2" color="success"
+                                            shape="rounded-pill">Paid</c-badge>
+                                        <c-badge *ngIf="ads.payment == 3" color="danger"
+                                            shape="rounded-pill">Failed</c-badge>
+                                        <c-badge class="m-2" *ngIf="ads.status == 5" color="success"
+                                            shape="rounded-pill">Pay
+                                            Now</c-badge>
+                                    </span>
+                                    <span *ngIf="ads.datePaid"> at {{ads.datePaid | date: "dd-MM-yyyy hh:mm:ss"}}</span>
+                                </p>
+
+                            </div>
+                            <div class="p-4 bg-light mt-2">
+                                <h5>Supporter</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>

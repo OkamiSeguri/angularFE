@@ -15,6 +15,8 @@ import { BlogPostComponent } from './views/blog-post/blog-post.component';
 import { AddBlogPostComponent } from './views/blog-post/add-blog-post/add-blog-post.component';
 import { BlogDetailComponent } from './views/blog-detail/blog-detail.component';
 import { EditBlogPostComponent } from './views/blog-post/edit-blog-post/edit-blog-post.component';
+import { MyAdsRequestComponent } from './views/ads/my-ads-request/my-ads-request.component';
+import { AdsDetailComponent } from './views/ads/ads-detail/ads-detail.component';
 
 
 const routes: Routes = [
@@ -118,6 +120,20 @@ const routes: Routes = [
       component: AddAdsComponent,
       data: {
         title: 'Add Ads'
+      },
+      canActivate: [authGuard]
+      },
+      { path: 'ads/my-ads',
+      component: MyAdsRequestComponent,
+      data: {
+        title: 'My Ads Request'
+      },
+      canActivate: [authGuard]
+      },
+      { path: 'ads/ads-detail/:id',
+      component: AdsDetailComponent,
+      data: {
+        title: 'Ads Detail'
       },
       canActivate: [authGuard]
       },
