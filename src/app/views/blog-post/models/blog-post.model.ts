@@ -1,3 +1,4 @@
+import { User } from "../../auth/models/user.model";
 import { Category } from "../../category/models/category.model";
 
 export interface BlogPost {
@@ -8,7 +9,7 @@ export interface BlogPost {
     featuredImageUrl: string;
     urlHandle: string;
     publishedDate: Date;
-    author: string;
+    author: User;
     isVisible: boolean;
     categories: Category[];
 }

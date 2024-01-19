@@ -67,7 +67,9 @@ export class AddAdsComponent implements OnInit{
         }
       }
     })
-    this.model.userId = this.authService.getUser().id
+    this.user = this.authService.getUser()
+    this.model.userId = this.user.id
+    
   }
   openAdsImageDialog(){
     this.addView.openDialog()

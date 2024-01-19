@@ -11,6 +11,8 @@ import { CategoryService } from '../../category/services/category.service';
 import { ImageService } from 'src/app/shared/components/image-slector/image.service';
 import { ToastrService } from 'ngx-toastr';
 import { UpdateBlogPostRequest } from '../models/update-blogpost-request.model';
+import { AuthService } from '../../auth/services/auth.service';
+import { User } from '../../auth/models/user.model';
 
 @Component({
   selector: 'app-edit-blog-post',
@@ -30,9 +32,10 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
   selectedCategory?: string[];
   isImageSelectorVisibale: boolean = false;
   imageSelectSubscription?: Subscription;
+  user?: User;
 
   constructor(private route: ActivatedRoute, private ngx: NgxUiLoaderService, private blogPostService: BlogPostService, private categoryService: CategoryService, private router: Router, private imageService: ImageService
-    ,private toastr : ToastrService) { }
+    ,private toastr : ToastrService,     private authService :AuthService    ) { }
   ngOnInit(): void {
     this.ngx.start();
     this.categories$ = this.categoryService.getAllCategories()
@@ -63,6 +66,7 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
         })
       }
     });
+    this.user = this.authService.getUser()
 
     
   }
@@ -85,7 +89,7 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
         featuredImageUrl: this.blogPost.featuredImageUrl,
         urlHandle: this.blogPost.urlHandle,
         publishedDate: this.blogPost.publishedDate,
-        author: this.blogPost.author,
+        author: this.blogPost.author.id,
         isVisible: this.blogPost.isVisible,
         categories: this.selectedCategory ?? []
       }
