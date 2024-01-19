@@ -5,7 +5,7 @@
         <h2 class="mt-4">{{ blogPost.title }}</h2>
 
         <div class="mt-4">
-          <span>Update by {{ blogPost.author }} at
+          <span>Update by {{ blogPost.author.email }} at
             {{ blogPost.publishedDate | date : "dd-MM-yyyy" }}</span>
         </div>
 

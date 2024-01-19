@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
+import { AdsListResponse } from '../models/ads-list-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class AdsService {
     return this. http.get<Ads>(`${environment.apiBaseUrl}/api/Advertisement/AdsDetail&id=${id}?addAuth=true`)
   }
 
-  getAdstByUser(id: string) : Observable<Ads[]> {
-    return this. http.get<Ads[]>(`${environment.apiBaseUrl}/api/Advertisement/MyAdsRequest&id=${id}?addAuth=true`)
+  getAdstByUser(id: string) : Observable<AdsListResponse[]> {
+    return this. http.get<AdsListResponse[]>(`${environment.apiBaseUrl}/api/Advertisement/MyAdsRequest&id=${id}?addAuth=true`)
   }
 
   deleteAds(id: string) : Observable<Ads> {

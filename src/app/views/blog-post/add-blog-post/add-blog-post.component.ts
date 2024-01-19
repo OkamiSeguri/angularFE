@@ -11,6 +11,8 @@ import { CategoryService } from '../../category/services/category.service';
 import { ImageService } from 'src/app/shared/components/image-slector/image.service';
 import { ToastrService } from 'ngx-toastr';
 import { BlogPost } from '../models/blog-post.model';
+import { User } from '../../auth/models/user.model';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-add-blog-post',
@@ -24,6 +26,7 @@ export class AddBlogPostComponent  implements OnInit{
   categories$?: Observable<Category[]>;
   isImageSelectorVisibale: boolean = false;
   imageSelectSubscription?: Subscription;
+  user?: User;
 
 
 
@@ -33,7 +36,8 @@ export class AddBlogPostComponent  implements OnInit{
     private router: Router,
     private categoryService: CategoryService,
     private imageService : ImageService,
-    private toastr : ToastrService
+    private toastr : ToastrService,
+    private authService :AuthService
   ) {
     this.model = {
       title: '',
@@ -57,6 +61,7 @@ export class AddBlogPostComponent  implements OnInit{
         }
       }
     })
+    this.user = this.authService.getUser()
   }
 
 

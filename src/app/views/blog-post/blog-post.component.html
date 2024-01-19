@@ -36,7 +36,7 @@
                   <ng-template #trueBlock><i class="fa-solid fa-check"></i></ng-template>
                   <ng-template #falseBlock><i class="fa-solid fa-x"></i></ng-template>
                 </td>
-                <td>{{ blogPost.author }}</td>
+                <td>{{ blogPost.author.email }}</td>
                 <td>
                   <span class="badge text-bg-primary me-1" *ngFor="let category of blogPost.categories">{{ category.name
                     }}</span>

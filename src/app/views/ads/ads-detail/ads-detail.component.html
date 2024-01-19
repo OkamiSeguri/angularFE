@@ -25,7 +25,7 @@
                                 <tbody>
                                     <tr>
                                         <td>{{ ads.company }}</td>
-                                        <td>[User]</td>
+                                        <td>{{ads.user.email}}</td>
                                         <td>
                                             <c-badge *ngIf="ads.type == 1" color="success"
                                                 shape="rounded-pill">Diamond</c-badge>

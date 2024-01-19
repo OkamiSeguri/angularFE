@@ -92,7 +92,9 @@
           </div>
           <div class="mb-3">
             <label cLabel for="author">Author</label>
-            <input cFormControl id="author" type="text" name="author" [(ngModel)]="model.author" />
+            <select class="form-select" [(ngModel)]="model.author" name="author" id="author">
+              <option selected *ngIf="user" [value]="user.id">{{user.email}}</option>
+            </select>
           </div>
           <div class="mb-3">
             <label cLabel for="categories">Categories</label>
